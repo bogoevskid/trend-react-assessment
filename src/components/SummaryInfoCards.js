@@ -1,10 +1,8 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import PercentageChips from "./PercentageChips";
 
 const SummaryInfoCards = ({
   color,
@@ -26,15 +24,7 @@ const SummaryInfoCards = ({
             </Typography>
           </Grid>
           <Grid item xs={6} container justifyContent="flex-end">
-            <Chip
-              sx={{ backgroundColor: "#EDF7EE" }}
-              icon={status === "positive" ? <TrendingUpIcon sx={{ color: "#027E08" }} /> : <TrendingDownIcon sx={{ color: "#B23229" }} />}
-              label={
-                <Typography variant="h6" sx={{ color: "#06800C" }}>
-                  {percentageValue}%
-                </Typography>
-              }
-            />
+            <PercentageChips status={status} value={percentageValue} />
           </Grid>
         </Grid>
       </CardContent>

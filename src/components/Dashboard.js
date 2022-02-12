@@ -46,7 +46,6 @@ function DashboardContent() {
               </Typography>
             }
           />
-
           <List component="nav" className="sideMenu" sx={{ width: 300 }}>
             {menuListItems}
           </List>
