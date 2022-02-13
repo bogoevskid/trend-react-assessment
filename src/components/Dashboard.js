@@ -6,14 +6,14 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import { menuListItems } from "./menuListItems";
-import Orders from "./Orders";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import CardHeader from "@mui/material/CardHeader";
 import stockAvatar from "../assets/avatars/stock-avatar.jpg";
 import SummaryInfoCards from "./SummaryInfoCards";
+import Clients from "./Clients";
+import CreateNewClient from "./CreateNewClient";
 
 const mdTheme = createTheme();
 
@@ -21,7 +21,7 @@ function DashboardContent() {
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex", bgcolor: "#2B3240" }}>
-        <Stack sx={{ bgcolor: "#2B3240" }}>
+        <Stack sx={{ bgcolor: "#2B3240" }} spacing={5} sx={{ pl: 3 }}>
           <CardHeader
             avatar={
               <Avatar
@@ -36,7 +36,7 @@ function DashboardContent() {
               />
             }
             title={
-              <Typography variant="subtitle1" sx={{ color: "#FFFFFF" }}>
+              <Typography variant="subtitle1" sx={{ color: "#FFFFFF", fontWeight: 700 }}>
                 Jane Doe
               </Typography>
             }
@@ -45,6 +45,7 @@ function DashboardContent() {
                 Manager
               </Typography>
             }
+            sx={{ pt: 10 }}
           />
           <List component="nav" className="sideMenu" sx={{ width: 300 }}>
             {menuListItems}
@@ -91,9 +92,10 @@ function DashboardContent() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
-                </Paper>
+                {/* <Clients /> */}
+              </Grid>
+              <Grid item xs={12}>
+                <CreateNewClient />
               </Grid>
             </Grid>
           </Container>

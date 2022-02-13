@@ -14,12 +14,12 @@ const SummaryInfoCards = ({
   return (
     <Card sx={{ backgroundColor: color, borderRadius: 5 }}>
       <CardContent sx={{ padding: 3 }}>
-        <Typography variant="h6" sx={{ color: "#FFFFFF" }}>
+        <Typography variant="h6" sx={{ color: "#FFFFFF", fontWeight: 100 }}>
           {primaryText}
         </Typography>
         <Grid container>
           <Grid item xs={6}>
-            <Typography variant="h6" sx={{ color: "#FFFFFF" }}>
+            <Typography variant="h5" sx={{ color: "#FFFFFF" }}>
               {secondaryText}
             </Typography>
           </Grid>
