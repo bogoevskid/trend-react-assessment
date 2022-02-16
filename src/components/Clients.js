@@ -1,27 +1,18 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import { menuListItems } from "./menuListItems";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import CardHeader from "@mui/material/CardHeader";
+import { Box, List, Typography, Container, Grid, Avatar, Stack, CardHeader } from "@mui/material";
+import MenuListItems from "./MenuListItems";
 import stockAvatar from "../assets/avatars/stock-avatar.jpg";
 import SummaryInfoCards from "./SummaryInfoCards";
-import Clients from "./Clients";
 import CreateNewClient from "./CreateNewClient";
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function Clients() {
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex", bgcolor: "#2B3240" }}>
-        <Stack sx={{ bgcolor: "#2B3240" }} spacing={5} sx={{ pl: 3 }}>
+        <Stack sx={{ bgcolor: "#2B3240", pl: 3, pr: 3 }} spacing={5}>
           <CardHeader
             avatar={
               <Avatar
@@ -36,7 +27,10 @@ function DashboardContent() {
               />
             }
             title={
-              <Typography variant="subtitle1" sx={{ color: "#FFFFFF", fontWeight: 700 }}>
+              <Typography
+                variant="subtitle1"
+                sx={{ color: "#FFFFFF", fontWeight: 700 }}
+              >
                 Jane Doe
               </Typography>
             }
@@ -48,7 +42,7 @@ function DashboardContent() {
             sx={{ pt: 10 }}
           />
           <List component="nav" className="sideMenu" sx={{ width: 300 }}>
-            {menuListItems}
+            <MenuListItems />
           </List>
         </Stack>
         <Box
@@ -58,11 +52,10 @@ function DashboardContent() {
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
-            borderRadius: 15,
+            borderRadius: "60px 0px 0px 60px",
           }}
         >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4, pt: 5 }}>
             <Grid container spacing={3}>
               <Grid item xs={4}>
                 <SummaryInfoCards
@@ -92,9 +85,6 @@ function DashboardContent() {
                 />
               </Grid>
               <Grid item xs={12}>
-                {/* <Clients /> */}
-              </Grid>
-              <Grid item xs={12}>
                 <CreateNewClient />
               </Grid>
             </Grid>
@@ -105,6 +95,4 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
-}
+export default Clients;

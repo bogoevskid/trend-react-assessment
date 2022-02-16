@@ -1,44 +1,55 @@
 import * as React from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
-import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
+import { ListItemButton, ListItemIcon, ListItemText, Box } from '@mui/material';
+import { CreditCard, Assessment, Settings, AutoAwesomeMosaic, AccountBoxRounded, StayCurrentPortraitSharp } from '@mui/icons-material';
+import { useLocation } from "react-router-dom";
 
-export const menuListItems = (
-  <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
-        <AutoAwesomeMosaicIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" sx={{ color: "#FFFFFF" }} />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
-        <AccountBoxRoundedIcon />
-      </ListItemIcon>
-      <ListItemText primary="Clients" sx={{ color: "#FFFFFF" }} />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
-        <CreditCardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Sales" sx={{ color: "#FFFFFF" }} />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
-        <AssessmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Analytics" sx={{ color: "#FFFFFF" }} />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
-        <SettingsIcon />
-      </ListItemIcon>
-      <ListItemText primary="Settings" sx={{ color: "#FFFFFF" }} />
-    </ListItemButton>
-  </React.Fragment>
-);
+const MenuListItems = () => {
+  const location = useLocation();
+  const currentPath = location.pathname.toString();
+
+  const menuItems = [
+    {
+      name: "Dashboard",
+      icon: <AutoAwesomeMosaic />,
+      active: currentPath.includes("dashboard")
+    },
+    {
+      name: "Clients",
+      icon: <AccountBoxRounded />,
+      active: currentPath.includes("clients")
+    },
+    {
+      name: "Sales",
+      icon: <CreditCard />,
+      active: currentPath.includes("sales")
+    },
+    {
+      name: "Analytics",
+      icon: <Assessment />,
+      active: currentPath.includes("analytics")
+    },
+    {
+      name: "Settings",
+      icon: <Settings />,
+      active: currentPath.includes("settings")
+    },
+  ]
+
+  return (
+    <>
+      {menuItems.map((item) => (
+        <Box
+          key={item.name}
+          sx={{ backgroundColor: item.active ? "primary.main" : "transparent", borderRadius: 1 }}>
+          <ListItemButton key={item.name}>
+            <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
+              {item.icon}
+            </ListItemIcon>
+            <ListItemText primary={item.name} sx={{ color: "#FFFFFF" }} />
+          </ListItemButton>
+        </Box>
+      ))}
+    </>
+  )
+};
+export default MenuListItems;
