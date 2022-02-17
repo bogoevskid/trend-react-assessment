@@ -5,10 +5,43 @@ import MenuListItems from "./MenuListItems";
 import stockAvatar from "../assets/avatars/stock-avatar.jpg";
 import SummaryInfoCards from "./SummaryInfoCards";
 import CreateNewClient from "./CreateNewClient";
+import ClientsTable from "./ClientsTable";
 
 const mdTheme = createTheme();
 
 function Clients() {
+  const data = [
+    {
+      id: 1,
+      name: "Jil McCasky",
+      lastTransaction: "February 1, 2022",
+      netPromoterScore: "9",
+      contact: "(610) 345-3456",
+    },
+    {
+      id: 2,
+      name: "Jil McCasky",
+      lastTransaction: "February 1, 2022",
+      netPromoterScore: "9",
+      contact: "(610) 345-3456",
+    },
+    {
+      id: 3,
+      name: "Jil McCasky",
+      lastTransaction: "February 1, 2022",
+      netPromoterScore: "9",
+      contact: "(610) 345-3456",
+    },
+    {
+      id: 4,
+      name: "Jil McCasky",
+      lastTransaction: "February 1, 2022",
+      netPromoterScore: "9",
+      contact: "(610) 345-3456",
+    },
+  ];
+  const [clients, setClients] = useState(data);
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex", bgcolor: "#2B3240" }}>
@@ -16,7 +49,7 @@ function Clients() {
           <CardHeader
             avatar={
               <Avatar
-                alt="Dragan Bogoevski"
+                alt="Jane Doe"
                 src={stockAvatar}
                 sx={{
                   border: 3,
@@ -85,7 +118,10 @@ function Clients() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <CreateNewClient />
+                <ClientsTable clients={clients} />
+              </Grid>
+              <Grid item xs={12}>
+                <CreateNewClient clientsLength={clients.length} create={(newClient) => setClients([newClient].concat([...clients]))} />
               </Grid>
             </Grid>
           </Container>

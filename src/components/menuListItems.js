@@ -40,7 +40,15 @@ const MenuListItems = () => {
       {menuItems.map((item) => (
         <Box
           key={item.name}
-          sx={{ backgroundColor: item.active ? "primary.main" : "transparent", borderRadius: 1 }}>
+          sx={{
+            backgroundColor: item.active ? "primary.main" : "transparent",
+            borderRadius: 1,
+            m: 1,
+            "& .MuiListItemButton-root:hover": {
+              backgroundColor: item.active ? "primary.main" : "#474d59",
+              borderRadius: 1
+            }
+          }}>
           <ListItemButton key={item.name}>
             <ListItemIcon sx={{ minWidth: 30, color: "#FFFFFF" }}>
               {item.icon}
