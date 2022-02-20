@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Box, List, Typography, Container, Grid, Avatar, Stack, CardHeader } from "@mui/material";
-import MenuListItems from "./MenuListItems";
-import stockAvatar from "../assets/avatars/stock-avatar.png";
+import { Box, Container, Grid } from "@mui/material";
 import SummaryInfoCards from "./SummaryInfoCards";
 import CreateNewClient from "./CreateNewClient";
 import ClientsTable from "./ClientsTable";
+import SidePanel from "./SidePanel";
 
 const mdTheme = createTheme();
 
@@ -56,39 +55,7 @@ function Clients() {
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex", bgcolor: "#2B3240" }}>
-        <Stack sx={{ bgcolor: "#2B3240", pl: 3, pr: 3 }} spacing={5}>
-          <CardHeader
-            avatar={
-              <Avatar
-                alt="Jane Doe"
-                src={stockAvatar}
-                sx={{
-                  border: 3,
-                  borderColor: "#FFFFFF",
-                  width: 80,
-                  height: 80,
-                }}
-              />
-            }
-            title={
-              <Typography
-                variant="subtitle1"
-                sx={{ color: "#FFFFFF", fontWeight: 700 }}
-              >
-                Jane Doe
-              </Typography>
-            }
-            subheader={
-              <Typography variant="caption" sx={{ color: "#FFFFFF" }}>
-                Manager
-              </Typography>
-            }
-            sx={{ pt: 10 }}
-          />
-          <List component="nav" className="sideMenu" sx={{ width: 300 }}>
-            <MenuListItems />
-          </List>
-        </Stack>
+        <SidePanel />
         <Box
           component="main"
           sx={{

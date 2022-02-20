@@ -5,11 +5,9 @@ import { Chip, Typography } from "@mui/material";
 const PercentageChips = ({ status, value }) => {
   return (
     <Chip
-      sx={
-        status === "positive"
-          ? { backgroundColor: "#EDF7EE", pl: 0.5, pr: 0.5, maxHeight: 25 }
-          : { backgroundColor: "#FDECEB", pl: 0.5, pr: 0.5, maxHeight: 25 }
-      }
+      sx={{
+        pl: 0.5, pr: 0.5, maxHeight: 25, backgroundColor: status === "positive" ? "#EDF7EE" : "#FDECEB"
+      }}
       icon={
         status === "positive" ? (
           <TrendingUp sx={{ fill: "#027E08" }} />
@@ -20,11 +18,9 @@ const PercentageChips = ({ status, value }) => {
       label={
         <Typography
           variant="h6"
-          sx={
-            status === "positive"
-              ? { color: "#06800C", fontWeight: 400, fontSize: 15 }
-              : { color: "#B23229", fontWeight: 400, fontSize: 15 }
-          }
+          sx={{
+            fontWeight: 500, fontSize: 15, color: status === "positive" ? "#06800C" : "#B23229"
+          }}
         >
           {value}%
         </Typography>
