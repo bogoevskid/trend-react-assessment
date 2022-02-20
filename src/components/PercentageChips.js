@@ -6,7 +6,7 @@ const PercentageChips = ({ status, value }) => {
   return (
     <Chip
       sx={{
-        pl: 0.5, pr: 0.5, maxHeight: 25, backgroundColor: status === "positive" ? "#EDF7EE" : "#FDECEB"
+        pl: 0.5, pr: 0.5, maxHeight: 30, backgroundColor: status === "positive" ? "#EDF7EE" : "#FDECEB"
       }}
       icon={
         status === "positive" ? (
@@ -19,7 +19,7 @@ const PercentageChips = ({ status, value }) => {
         <Typography
           variant="h6"
           sx={{
-            fontWeight: 500, fontSize: 15, color: status === "positive" ? "#06800C" : "#B23229"
+            fontWeight: 500, fontSize: "18px", color: status === "positive" ? "#06800C" : "#B23229"
           }}
         >
           {value}%

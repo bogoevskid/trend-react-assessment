@@ -28,7 +28,7 @@ const CreateNewClient = ({ addNewClient }) => {
 
   return (
     <Paper elevation={0} variant="outlined" sx={{ p: 2 }}>
-      <Typography variant="h5" gutterBottom>
+      <Typography gutterBottom sx={{ fontSize: "24px" }}>
         Create New Client
       </Typography>
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ pt: 3, pr: 3, pb: 3 }}>

@@ -7,7 +7,7 @@ import ClientsSearchTextField from "./ClientsSearchTextField";
 const ClientsSearchToolbar = ({ requestSearch, columns }) => {
     return (
         <Stack direction="row" alignItems="center" justifyContent="space-between" padding="10px 20px">
-            <Typography variant="h5" gutterBottom>
+            <Typography gutterBottom sx={{fontSize: "24px"}}>
                 All Clients
             </Typography>
             <Box sx={{ p: 0.5, pb: 0 }} display="flex" alignItems="center">
