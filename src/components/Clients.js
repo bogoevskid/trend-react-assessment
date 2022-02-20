@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box, List, Typography, Container, Grid, Avatar, Stack, CardHeader } from "@mui/material";
 import MenuListItems from "./MenuListItems";
-import stockAvatar from "../assets/avatars/stock-avatar.jpg";
+import stockAvatar from "../assets/avatars/stock-avatar.png";
 import SummaryInfoCards from "./SummaryInfoCards";
 import CreateNewClient from "./CreateNewClient";
 import ClientsTable from "./ClientsTable";
@@ -10,37 +10,48 @@ import ClientsTable from "./ClientsTable";
 const mdTheme = createTheme();
 
 function Clients() {
-  const data = [
-    {
-      id: 1,
-      name: "Jil McCasky",
-      lastTransaction: "February 1, 2022",
-      netPromoterScore: "9",
-      contact: "(610) 345-3456",
-    },
-    {
-      id: 2,
-      name: "Jil McCasky",
-      lastTransaction: "February 1, 2022",
-      netPromoterScore: "9",
-      contact: "(610) 345-3456",
-    },
-    {
-      id: 3,
-      name: "Jil McCasky",
-      lastTransaction: "February 1, 2022",
-      netPromoterScore: "9",
-      contact: "(610) 345-3456",
-    },
-    {
-      id: 4,
-      name: "Jil McCasky",
-      lastTransaction: "February 1, 2022",
-      netPromoterScore: "9",
-      contact: "(610) 345-3456",
-    },
-  ];
-  const [clients, setClients] = useState(data);
+  const [clients, setClients] = useState([]);
+
+  useEffect(() => {
+    const getClients = async () => {
+      const clientsFromServer = await fetchClients();
+      if (clientsFromServer) {
+        clientsFromServer.sort((a, b) => (Date(a.timeCreated) > Date(b.timeCreated) ? 1 : -1));
+        setClients(clientsFromServer);
+      }
+    }
+
+    getClients()
+  }, []);
+
+  const fetchClients = async () => {
+    try {
+      const res = await fetch('http://localhost:5000/clients');
+      const data = res.json();
+      return data;
+    }
+    catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addNewClient = async (client) => {
+    try {
+      const res = await fetch('http://localhost:5000/clients', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(client)
+      });
+
+      const data = await res.json();
+      setClients([data].concat([...clients]));
+    }
+    catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -121,7 +132,7 @@ function Clients() {
                 <ClientsTable clients={clients} />
               </Grid>
               <Grid item xs={12}>
-                <CreateNewClient clientsLength={clients.length} create={(newClient) => setClients([newClient].concat([...clients]))} />
+                <CreateNewClient addNewClient={addNewClient} />
               </Grid>
             </Grid>
           </Container>

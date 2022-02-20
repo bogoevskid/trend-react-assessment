@@ -1,7 +1,5 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+import PropTypes from "prop-types";
+import { Card, CardContent, Typography, Grid } from "@mui/material";
 import PercentageChips from "./PercentageChips";
 
 const SummaryInfoCards = ({
@@ -30,6 +28,14 @@ const SummaryInfoCards = ({
       </CardContent>
     </Card>
   );
+};
+
+SummaryInfoCards.propTypes = {
+  color: PropTypes.string.isRequired,
+  primaryText: PropTypes.string.isRequired,
+  secondaryText: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  percentageValue: PropTypes.string.isRequired,
 };
 
 export default SummaryInfoCards;

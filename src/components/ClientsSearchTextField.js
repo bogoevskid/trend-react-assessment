@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { TextField, IconButton } from "@mui/material";
 import { Clear } from "@mui/icons-material";
 
@@ -61,6 +62,10 @@ const ClientsSearchTextField = ({ requestSearch }) => {
             }}
         />
     )
+};
+
+ClientsSearchTextField.propTypes = {
+    requestSearch: PropTypes.func.isRequired,
 };
 
 export default ClientsSearchTextField

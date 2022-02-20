@@ -1,0 +1,44 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "Jil McCasky",
+      "lastTransaction": "February 1, 2022",
+      "netPromoterScore": "9",
+      "contact": "(610) 345-3456",
+      "timeCreated": "2022-02-20T02:06:40.542Z"
+    },
+    {
+      "id": 2,
+      "name": "Jil McCasky",
+      "lastTransaction": "February 1, 2022",
+      "netPromoterScore": "9",
+      "contact": "(610) 345-3456",
+      "timeCreated": "2022-02-20T02:06:41.542Z"
+    },
+    {
+      "id": 3,
+      "name": "Jil McCasky",
+      "lastTransaction": "February 1, 2022",
+      "netPromoterScore": "9",
+      "contact": "(610) 345-3456",
+      "timeCreated": "2022-02-20T02:06:42.542Z"
+    },
+    {
+      "id": 4,
+      "name": "Jil McCasky",
+      "lastTransaction": "February 1, 2022",
+      "netPromoterScore": "9",
+      "contact": "(610) 345-3456",
+      "timeCreated": "2022-02-20T02:06:43.542Z"
+    },
+    {
+      "name": "Dragan Bogoevski",
+      "lastTransaction": "N/A",
+      "netPromoterScore": "N/A",
+      "contact": "4809300080",
+      "timeCreated": "2022-02-20T02:24:00.723Z",
+      "id": 5
+    }
+  ]
+}

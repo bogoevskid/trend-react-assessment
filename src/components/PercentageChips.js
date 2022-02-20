@@ -1,7 +1,6 @@
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
-import Chip from "@mui/material/Chip";
-import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import { TrendingUp, TrendingDown } from "@mui/icons-material";
+import { Chip, Typography } from "@mui/material";
 
 const PercentageChips = ({ status, value }) => {
   return (
@@ -13,9 +12,9 @@ const PercentageChips = ({ status, value }) => {
       }
       icon={
         status === "positive" ? (
-          <TrendingUpIcon sx={{ fill: "#027E08" }} />
+          <TrendingUp sx={{ fill: "#027E08" }} />
         ) : (
-          <TrendingDownIcon sx={{ fill: "#B23229" }} />
+          <TrendingDown sx={{ fill: "#B23229" }} />
         )
       }
       label={
@@ -32,6 +31,11 @@ const PercentageChips = ({ status, value }) => {
       }
     />
   );
+};
+
+PercentageChips.propTypes = {
+  status: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default PercentageChips;

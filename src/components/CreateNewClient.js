@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Paper, TextField, Button, Typography, Stack } from "@mui/material";
 
-const CreateNewClient = ({ clientsLength, create }) => {
+const CreateNewClient = ({ addNewClient }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
@@ -14,14 +15,14 @@ const CreateNewClient = ({ clientsLength, create }) => {
 
   const createNewClient = () => {
     const newClient = {
-      id: clientsLength + 1,
       name: `${firstName} ${lastName}`,
       lastTransaction: "N/A",
       netPromoterScore: "N/A",
       contact: contactNumber,
+      timeCreated: new Date().toJSON()
     }
 
-    create(newClient);
+    addNewClient(newClient);
     clearForm();
   }
 
@@ -46,6 +47,10 @@ const CreateNewClient = ({ clientsLength, create }) => {
       </Stack>
     </Paper>
   );
+};
+
+CreateNewClient.propTypes = {
+  addNewClient: PropTypes.func.isRequired,
 };
 
 export default CreateNewClient;

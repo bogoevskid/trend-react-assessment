@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ListItemButton, ListItemIcon, ListItemText, Box } from '@mui/material';
-import { CreditCard, Assessment, Settings, AutoAwesomeMosaic, AccountBoxRounded, StayCurrentPortraitSharp } from '@mui/icons-material';
+import { CreditCard, Assessment, Settings, AutoAwesomeMosaic, AccountBoxRounded } from '@mui/icons-material';
 import { useLocation } from "react-router-dom";
 
 const MenuListItems = () => {
