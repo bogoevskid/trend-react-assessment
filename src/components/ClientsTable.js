@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import ClientsSearchToolbar from "./ClientsSearchToolbar";
 
@@ -30,22 +31,23 @@ const ClientsTable = ({ clients }) => {
     },
   ];
   const [rows, setRows] = React.useState([]);
-  const [searchText, setSearchText] = React.useState("");
-  const [filterButtonEl, setFilterButtonEl] = React.useState(null);
 
-  React.useEffect(() => { setRows(clients) }, [clients])
+  React.useEffect(() => { setRows(clients) }, [clients]);
 
   const escapeRegExp = (value) => {
     return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-  }
+  };
 
-  const requestSearch = (searchValue) => {
-    setSearchText(searchValue);
+  const requestSearch = (searchValue, column) => {
     const searchRegex = new RegExp(escapeRegExp(searchValue), "i");
     const filteredRows = clients.filter((client) => {
-      return Object.keys(client).some((field) => {
-        return searchRegex.test(client[field].toString());
-      });
+      if (!column)
+        return Object.keys(client).some((field) => {
+          return searchRegex.test(client[field].toString());
+        });
+      else {
+        return searchRegex.test(client[column].toString());
+      }
     });
     setRows(filteredRows);
   };
@@ -62,14 +64,9 @@ const ClientsTable = ({ clients }) => {
           Toolbar: ClientsSearchToolbar,
         }}
         componentsProps={{
-          panel: {
-            anchorEl: filterButtonEl
-          },
           toolbar: {
-            value: searchText,
-            onChange: (event) => requestSearch(event.target.value),
-            clearSearch: () => requestSearch(""),
-            setFilterButtonEl,
+            requestSearch: requestSearch,
+            columns,
           }
         }}
         sx={{
@@ -92,6 +89,10 @@ const ClientsTable = ({ clients }) => {
       />
     </div>
   );
+};
+
+ClientsTable.propTypes = {
+  clients: PropTypes.array.isRequired,
 };
 
 export default ClientsTable;
