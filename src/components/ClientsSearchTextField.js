@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import { TextField, IconButton } from "@mui/material";
 import { Clear } from "@mui/icons-material";
 
 const ClientsSearchTextField = ({ requestSearch }) => {
-    const [searchText, setSearchText] = React.useState("");
+    const [searchText, setSearchText] = useState("");
 
     const requestTextSearch = (value) => {
         setSearchText(value);

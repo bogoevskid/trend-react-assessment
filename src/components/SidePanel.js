@@ -4,6 +4,8 @@ import MenuListItems from "./MenuListItems";
 import stockAvatar from "../assets/avatars/stock-avatar.png";
 
 const SidePanel = () => {
+    // Name & role can be hardcoded, however, I assumed that multiple users can log in 
+    // and these values can change depending on the logged in user
     const [name, setName] = useState("Jane Doe");
     const [role, setRole] = useState("Manager");
 

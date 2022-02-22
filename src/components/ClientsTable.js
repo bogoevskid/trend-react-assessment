@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import ClientsSearchToolbar from "./ClientsSearchToolbar";
@@ -30,9 +30,9 @@ const ClientsTable = ({ clients }) => {
       flex: 1,
     },
   ];
-  const [rows, setRows] = React.useState([]);
+  const [rows, setRows] = useState([]);
 
-  React.useEffect(() => { setRows(clients) }, [clients]);
+  useEffect(() => { setRows(clients) }, [clients]);
 
   const escapeRegExp = (value) => {
     return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

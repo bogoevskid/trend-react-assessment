@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import { Stack, Box, Popover, Button, FormControl, InputLabel, Select, MenuItem, TextField, Typography, IconButton } from '@mui/material';
 import { Close as CloseIcon, FilterList as FilterListIcon } from '@mui/icons-material';
 
 const ClientsSearchFilterPopover = ({ requestSearch, columns }) => {
-    const [selectedColumn, setSelectedColumn] = React.useState(columns[0].field);
-    const [columnValue, setColumnValue] = React.useState("");
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [selectedColumn, setSelectedColumn] = useState(columns[0].field);
+    const [columnValue, setColumnValue] = useState("");
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
     const id = open ? 'clients-filter-popover' : undefined;
@@ -20,6 +20,7 @@ const ClientsSearchFilterPopover = ({ requestSearch, columns }) => {
         setColumnValue("");
         requestSearch("", selectedColumn);
     }
+
     return (
         <Box>
             <Button aria-describedby={id} variant="text" size="small" onClick={(event) => setAnchorEl(event.currentTarget)}
