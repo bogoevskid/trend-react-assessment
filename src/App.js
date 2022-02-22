@@ -6,7 +6,7 @@ import '@fontsource/roboto/700.css';
 import Clients from './components/Clients';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
